@@ -1,0 +1,21 @@
+workspace = { members = [
+    "uller_macro",
+], package.version = "0.0.1", package.authors = [
+    "TOwInOK",
+] }
+[package]
+version.workspace = true
+authors.workspace = true
+name = "uller"
+edition = "2021"
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+url = "2.5.2"
+uller_macro = { path = "./uller_macro" }
+serde = "1.0.204"
+reqwest = { version = "0.12.5", features = ["json"] }
+async-trait = "0.1.81"
+bytes = "1.6.1"
