@@ -11,6 +11,7 @@ mod tests {
         id: usize,
         name: String,
         #[name = "p"]
+        #[pos = 0]
         price: f64,
         description: String,
     }
@@ -35,7 +36,7 @@ mod tests {
         )
         .unwrap();
 
-        println!("{:#?}", &expected_url.query());
+        // panic!("{:#?}", &url.query());
         assert_eq!(url, expected_url);
     }
 }
