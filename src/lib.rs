@@ -11,11 +11,13 @@ use url::Url;
 /// usefull autogeneraing implimentations for structures
 pub use uller_macro::*;
 
+// for Qller
 /// Trait for unification [Url] builder
 pub trait MakeLink {
     fn url_generate(&self) -> Url;
 }
 
+// for Jller
 /// Desirialize to json any struct by [link](MakeLink)
 #[async_trait]
 pub trait JsonDownload<T>: MakeLink
@@ -27,6 +29,7 @@ where
     }
 }
 
+// for Bller
 /// Download [bytes](bytes:Bytes) by [link](MakeLink)
 #[async_trait]
 pub trait BytesDownload: MakeLink {

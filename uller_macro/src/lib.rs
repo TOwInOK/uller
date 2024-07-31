@@ -26,12 +26,10 @@ pub fn qller_derive(input: TokenStream) -> TokenStream {
 
 fn impl_qller(ast: &DeriveInput) -> TokenStream {
     let base_url = extract_base_url(ast);
-    let name = quote::format_ident!("{}", &ast.ident);
-    let fields = get_fields(ast);
-    let fields = sort_fielnds(fields);
-    let qoute_fields = fields.into_iter().map(|(t, v)| {
+    let name = &ast.ident;
+    let qoute_fields = sort_fielnds(get_fields(ast)).into_iter().map(|(t, v)| {
         quote! {
-            params.push((self.#t, self.#v.to_string()));
+            params.push((#t, self.#v.to_string()));
         }
     });
 

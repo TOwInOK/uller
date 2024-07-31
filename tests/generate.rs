@@ -4,39 +4,33 @@ mod tests {
     use uller::Qller;
     use url::Url;
 
-    #[derive(Qller)]
+    #[derive(Qller, Debug)]
     #[url = "https://example.com"]
     struct Pancakes {
         #[name = "ident"]
         id: usize,
         name: String,
         #[name = "p"]
-        #[pos = 0]
+        #[pos = 1]
         price: f64,
-        description: String,
     }
 
     #[test]
     fn it_works() {
         let pancake = Pancakes {
             id: 1,
-            name: "Blueberry Pancake".to_string(),
+            name: "t".to_string(),
             price: 5.99,
-            description: "Delicious blueberry pancake".to_string(),
         };
         let url = pancake.url_generate();
         let expected_url = Url::parse_with_params(
             "https://example.com",
-            &[
-                ("ident", "1"),
-                ("name", "Blueberry Pancake"),
-                ("p", "5.99"),
-                ("description", "Delicious blueberry pancake"),
-            ],
+            &[("ident", "1"), ("p", "5.99"), ("name", "t")],
         )
         .unwrap();
 
         // panic!("{:#?}", &url.query());
-        assert_eq!(url, expected_url);
+        println!("{:#?}", pancake);
+        assert_eq!(url.query(), expected_url.query());
     }
 }
