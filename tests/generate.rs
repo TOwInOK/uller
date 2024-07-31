@@ -1,10 +1,21 @@
 #[cfg(test)]
 mod tests {
+    use serde::Deserialize;
+    use uller::Buller;
+    use uller::BytesDownload;
+    use uller::JsonDownload;
+    use uller::Juller;
     use uller::MakeLink;
     use uller::Qller;
     use url::Url;
 
-    #[derive(Qller, Debug)]
+    #[derive(Deserialize)]
+    struct Test {
+        t: String,
+    }
+
+    #[derive(Qller, Debug, Juller, Buller)]
+    #[output = "Test"]
     #[url = "https://example.com"]
     struct Pancakes {
         #[name = "ident"]

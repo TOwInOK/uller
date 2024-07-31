@@ -15,7 +15,15 @@ edition = "2021"
 [dependencies]
 url = "2.5.2"
 uller_macro = { path = "./uller_macro" }
-serde = "1.0.204"
-reqwest = { version = "0.12.5", features = ["json"] }
-async-trait = "0.1.81"
-bytes = "1.6.1"
+
+serde = { version = "1.0.204", optional = true, features = ["derive"] }
+reqwest = { version = "0.12.5", features = ["json"], optional = true }
+async-trait = { version = "0.1.81", optional = true }
+bytes = { version = "1.6.1", optional = true }
+
+
+[features]
+default = ["juller", "buller"]
+juller = ["serde", "async-trait", "reqwest"]
+buller = ["bytes", "async-trait", "reqwest"]
+full = ["juller", "buller"]

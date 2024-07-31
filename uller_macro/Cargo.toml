@@ -13,3 +13,9 @@ syn = { version = "1.0", features = ["full"] }
 
 [lib]
 proc-macro = true
+
+[features]
+default = ["full"]
+buller = []
+juller = []
+full = ["buller", "juller"]
