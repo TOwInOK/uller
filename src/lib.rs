@@ -4,12 +4,12 @@
 
 #[cfg(feature = "macro")]
 pub use uller_macro::*;
-use url::Url;
+pub use url::Url;
 
 // for Qller
 /// Trait for unification [Url] builder
 pub trait MakeLink {
-    fn url_generate(&self) -> Url;
+    fn url_generate(&self) -> crate::Url;
 }
 #[cfg(feature = "juller")]
 // for Jller
@@ -64,5 +64,5 @@ pub mod prelude {
     #[cfg(feature = "macro")]
     pub use uller_macro::Qller;
 
-    pub use url::Url;
+    pub use crate::Url;
 }
