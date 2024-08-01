@@ -2,7 +2,6 @@ use proc_macro::TokenStream;
 use quote::quote;
 use syn::{Attribute, DeriveInput, Lit, Meta};
 
-// Функция для реализации Juller
 pub fn impl_juller(ast: &DeriveInput) -> TokenStream {
     let name = &ast.ident;
     let output_type = parse_attributes(&ast.attrs);
@@ -12,7 +11,6 @@ pub fn impl_juller(ast: &DeriveInput) -> TokenStream {
     expanded.into()
 }
 
-// Функция для парсинга атрибутов
 fn parse_attributes(attrs: &[Attribute]) -> syn::Type {
     attrs
         .iter()
