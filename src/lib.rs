@@ -2,8 +2,7 @@
 //! and
 //! download data by created links
 
-/// This macro crate give you
-/// usefull autogeneraing implimentations for structures
+#[cfg(feature = "macro")]
 pub use uller_macro::*;
 use url::Url;
 
@@ -20,17 +19,50 @@ pub trait JsonDownload<T>: MakeLink
 where
     T: for<'a> serde::Deserialize<'a>,
 {
+    /// Make url and parse to `<T>`
     async fn download(&self) -> Result<T, Box<dyn std::error::Error>> {
         Ok(reqwest::get(self.url_generate()).await?.json().await?)
+    }
+    /// Make url and parse to `<T>` with url anotate
+    async fn download_verbose(&self) -> Result<T, Box<dyn std::error::Error>> {
+        let url = self.url_generate();
+        println!("{:#?}", String::from(url.clone()));
+        Ok(reqwest::get(url).await?.json().await?)
     }
 }
 
 #[cfg(feature = "buller")]
 // for Bller
-/// Download [bytes](bytes:Bytes) by [link](MakeLink)
+/// Download bytes by [link](MakeLink)
 #[async_trait::async_trait]
 pub trait BytesDownload: MakeLink {
+    /// Make url and parse to Bytes
     async fn download(&self) -> Result<bytes::Bytes, Box<dyn std::error::Error>> {
         Ok(reqwest::get(self.url_generate()).await?.bytes().await?)
     }
+    /// Make url and parse to Bytes with url anotate
+    async fn download_verbose(&self) -> Result<bytes::Bytes, Box<dyn std::error::Error>> {
+        let url = self.url_generate();
+        println!("{:#?}", String::from(url.clone()));
+        Ok(reqwest::get(url).await?.bytes().await?)
+    }
+}
+
+/// Just all that you need.
+pub mod prelude {
+    #[cfg(feature = "buller")]
+    pub use crate::BytesDownload;
+    #[cfg(feature = "juller")]
+    pub use crate::JsonDownload;
+
+    pub use crate::MakeLink;
+
+    #[cfg(feature = "buller")]
+    pub use uller_macro::Buller;
+    #[cfg(feature = "juller")]
+    pub use uller_macro::Juller;
+    #[cfg(feature = "macro")]
+    pub use uller_macro::Qller;
+
+    pub use url::Url;
 }

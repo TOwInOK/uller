@@ -4,21 +4,7 @@ use proc_macro::TokenStream;
 use quote::quote;
 use syn::{self, Data, DeriveInput, Fields, Ident, Lit, Meta};
 
-///
 /// Macros for implement [MakeLink](uller::MakeLink) in query style by using struct as reference
-/// ```
-/// #[derive(Qller)]
-/// #[url = "https://example.com"] // req!
-/// struct Pancakes {
-///     #[name = "ident"]
-///     id: usize,
-///     name: String,
-///     #[name = "p"]
-///     price: f64,
-///     description: String,
-/// }
-///```
-
 pub fn impl_qller(ast: &DeriveInput) -> TokenStream {
     let base_url = extract_base_url(ast);
     let name = &ast.ident;

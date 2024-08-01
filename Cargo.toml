@@ -9,21 +9,27 @@ authors.workspace = true
 name = "uller"
 edition = "2021"
 
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 url = "2.5.2"
-uller_macro = { path = "./uller_macro" }
+uller_macro = { path = "./uller_macro", optional = true }
 
-serde = { version = "1.0.204", optional = true, features = ["derive"] }
+serde = { version = "1.0.204", optional = true }
 reqwest = { version = "0.12.5", features = ["json"], optional = true }
 async-trait = { version = "0.1.81", optional = true }
 bytes = { version = "1.6.1", optional = true }
 
+[dev-dependencies]
+mockito = "1.5.0"
+serde = { version = "1.0.204", features = ["derive"] }
+tokio = { version = "1.39.2", features = ["full"] }
+tokio-macros = "2.4.0"
+
+uller_macro = { path = "./uller_macro", features = ["full"] }
+uller = { path = ".", features = ["full"] }
 
 [features]
-default = ["juller", "buller"]
-juller = ["serde", "async-trait", "reqwest"]
-buller = ["bytes", "async-trait", "reqwest"]
-full = ["juller", "buller"]
+macro = ["uller_macro"]
+juller = ["serde", "async-trait", "reqwest", "uller_macro/juller", "macro"]
+buller = ["bytes", "async-trait", "reqwest", "uller_macro/buller", "macro"]
+full = ["juller", "buller", "macro"]
+default = []
