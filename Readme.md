@@ -1,79 +1,94 @@
 # Uller
 
 ## About
-This crate give you:
-* MakeLink
-  - Interface for making `Url` from structure
-* JsonDownload<T>
-  - Interface for fetching data from generated `Url` by `MakeLink` and convert to ``<T>`` structure
-* BytesDownload
-  - Interface for download some data as `bytes` from `MakeLink` convert
 
-### info under is [uller-macro crate examples](https://crates.io/crates/uller_macro)
+This crate provides you with:
+
+* `MakeLink`
+  - An interface for generating a `Url` from a structure.
+* `JsonDownload<T>`
+  - An interface for fetching data from a generated `Url` using `MakeLink` and converting it to a `<T>` structure.
+* `BytesDownload`
+  - An interface for downloading data as `bytes` from a `MakeLink` conversion.
+
+### Information below contains examples from the [uller-macro crate](https://crates.io/crates/uller_macro).
 
 # Example (future - macro)
 
 ## Qller (default)
-### Macros for implement `MakeLink` in query style by using struct as prompt
+
+### Macros for implementing `MakeLink` in query style using a struct as input
+
 #### Example
+
 ```rust
-  use uller::prelude;
-  #[derive(Qller)]
-  #[url = "http://127.0.0.1:1234/"]
-  struct Test {
-      #[name = "f"] // rename to "f"
-      f111: String,
-      #[name = "v"] // rename to "v"
-      #[pos = 0] // move it in first position
-      v222: String
-  }
+use uller::prelude;
+#[derive(Qller)]
+#[url = "http://127.0.0.1:1234/"]
+struct Test {
+    #[name = "f"] // rename to "f"
+    f111: String,
+    #[name = "v"] // rename to "v"
+    #[pos = 0]    // move it to the first position
+    v222: String,
+}
 ```
-will convert to http://127.0.0.1:1234/?v={value}&f={value}
-note: position starts with 0 pos like an array.
+
+This will convert to: `http://127.0.0.1:1234/?v={value}&f={value}`
+
+**Note:** Positions start at 0, like an array.
 
 # Example (future - juller)
 
 ## Juller (feature - juller)
-### Macros for download ``<T>`` using struct which implement `MakeLink` (`Qller`) and `JsonDownload`
+
+### Macros for downloading `<T>` using a struct that implements `MakeLink` (`Qller`) and `JsonDownload`
+
 #### Example
+
 ```rust
-  use uller::prelude;
-  #[derive(Qller, Juller)]
-  #[output = "TestOut"]
-  #[url = "http://127.0.0.1:41112/"]
-  struct Test {
-      f: String,
-      v: String,
-  }
-  #[derive(Deserialize, Debug)]
-  struct TestOut {
-      field: String,
-  }
-  async fn convert(st: &Test) -> TestOut {
-      st.download().await.unwrap()
-      // or
-      st.download_verbose().await.unwrap()
-  }
+use uller::prelude;
+#[derive(Qller, Juller)]
+#[output = "TestOut"]
+#[url = "http://127.0.0.1:41112/"]
+struct Test {
+    f: String,
+    v: String,
+}
+
+#[derive(Deserialize, Debug)]
+struct TestOut {
+    field: String,
+}
+
+async fn convert(st: &Test) -> TestOut {
+    st.download().await.unwrap()
+    // or
+    st.download_verbose().await.unwrap()
+}
 ```
 
 # Example (future - buller)
 
 ## Buller (feature - buller)
-### Macros for download `Bytes` using struct which implement `MakeLink` (`Qller`) and `BytesDownload`
+
+### Macros for downloading `Bytes` using a struct that implements `MakeLink` (`Qller`) and `BytesDownload`
+
 #### Example
-  ```rust
-    use uller::prelude;
 
-    #[derive(Qller, Buller)]
-    #[url = "http://127.0.0.1:41112/"]
-    struct Test {
-        f: String,
-        v: String,
-    }
+```rust
+use uller::prelude;
 
-    async fn convert(st: &Test) -> bytes::Bytes {
-        st.download().await.unwrap()
-        // or
-        st.download_verbose().await.unwrap()
-    }
+#[derive(Qller, Buller)]
+#[url = "http://127.0.0.1:41112/"]
+struct Test {
+    f: String,
+    v: String,
+}
+
+async fn convert(st: &Test) -> bytes::Bytes {
+    st.download().await.unwrap()
+    // or
+    st.download_verbose().await.unwrap()
+}
 ```

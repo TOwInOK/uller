@@ -1,9 +1,9 @@
 # Uller Macro
 
-# Crate provide usefull iterface for uller crate
+# Crate provides a useful interface for the uller crate
 
 # Qller (default)
-## Macros for implement `MakeLink` in query style by using struct as prompt
+## Macros for implementing `MakeLink` in query style using a struct as input
 ### Example
 ```rust
   use uller::prelude;
@@ -13,15 +13,16 @@
       #[name = "f"] // rename to "f"
       f111: String,
       #[name = "v"] // rename to "v"
-      #[pos = 0] // move it in first position
-      v222: String
+      #[pos = 0]    // move it to the first position
+      v222: String,
   }
 ```
-will convert to http://127.0.0.1:1234/?v={value}&f={value}
-note: position starts with 0 pos like an array.
+This will convert to `http://127.0.0.1:1234/?v={value}&f={value}`
+
+Note: Positions start at 0, like an array.
 
 # Juller (feature - juller)
-## Macros for download ``<T>`` using struct which implement `MakeLink` (`Qller`) and `JsonDownload`
+## Macros for downloading `<T>` using a struct that implements `MakeLink` (`Qller`) and `JsonDownload`
 ### Example
 ```rust
   use uller::prelude;
@@ -44,21 +45,21 @@ note: position starts with 0 pos like an array.
 ```
 
 # Buller (feature - buller)
-## Macros for download `Bytes` using struct which implement `MakeLink` (`Qller`) and `BytesDownload`
+## Macros for downloading `Bytes` using a struct that implements `MakeLink` (`Qller`) and `BytesDownload`
 ### Example
-  ```rust
-    use uller::prelude;
+```rust
+  use uller::prelude;
 
-    #[derive(Qller, Buller)]
-    #[url = "http://127.0.0.1:41112/"]
-    struct Test {
-        f: String,
-        v: String,
-    }
+  #[derive(Qller, Buller)]
+  #[url = "http://127.0.0.1:41112/"]
+  struct Test {
+      f: String,
+      v: String,
+  }
 
-    async fn convert(st: &Test) -> bytes::Bytes {
-        st.download().await.unwrap()
-        // or
-        st.download_verbose().await.unwrap()
-    }
+  async fn convert(st: &Test) -> bytes::Bytes {
+      st.download().await.unwrap()
+      // or
+      st.download_verbose().await.unwrap()
+  }
 ```
