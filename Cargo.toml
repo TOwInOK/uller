@@ -39,8 +39,3 @@ juller = ["serde", "async-trait", "reqwest", "uller_macro/juller", "macro"]
 buller = ["bytes", "async-trait", "reqwest", "uller_macro/buller", "macro"]
 full = ["juller", "buller", "macro"]
 default = []
-
-# [[bin]]
-# required-features = ["macro"]
-# name = "uller_macro"
-# path = "./uller_macro"
