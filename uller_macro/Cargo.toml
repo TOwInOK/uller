@@ -1,6 +1,7 @@
 [package]
 version.workspace = true
 authors.workspace = true
+package.license = true
 name = "uller_macro"
 edition = "2021"
 

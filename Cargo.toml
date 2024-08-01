@@ -6,8 +6,10 @@ workspace = { members = [
 [package]
 version.workspace = true
 authors.workspace = true
+package.license = true
 name = "uller"
 edition = "2021"
+repository = "https://github.com/TOwInOK/uller"
 
 [dependencies]
 url = "2.5.2"
