@@ -6,7 +6,7 @@ authors = ["TOwInOK"]
 license = "MIT"
 
 [package]
-version = "0.1.1"
+version = "0.1.2"
 authors.workspace = true
 package.license = true
 license.workspace = true

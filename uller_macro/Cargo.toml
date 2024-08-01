@@ -4,7 +4,7 @@ package.license = true
 license.workspace = true
 name = "uller_macro"
 edition = "2021"
-version = "0.1.1"
+version = "0.1.2"
 description = "Macro-crate for uller"
 
 [dependencies]
