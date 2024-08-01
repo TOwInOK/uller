@@ -6,7 +6,7 @@ authors = ["TOwInOK"]
 license = "MIT"
 
 [package]
-version = "0.1.22"
+version = "0.1.23"
 authors.workspace = true
 package.license = true
 license.workspace = true
@@ -25,7 +25,7 @@ documentation = "https://docs.rs/uller"
 
 [dependencies]
 url = "2.5.2"
-uller_macro = { version = "0.1.1", path = "./uller_macro", optional = true }
+uller_macro = { version = "0.1.21", path = "./uller_macro", optional = true }
 serde = { version = "1.0.204", optional = true }
 reqwest = { version = "0.12.5", features = ["json"], optional = true }
 async-trait = { version = "0.1.81", optional = true }
@@ -37,7 +37,9 @@ serde = { version = "1.0.204", features = ["derive"] }
 tokio = { version = "1.39.2", features = ["full"] }
 tokio-macros = "2.4.0"
 
-uller_macro = { version = "0.1.1", path = "./uller_macro", features = ["full"] }
+uller_macro = { version = "0.1.21", path = "./uller_macro", features = [
+    "full",
+] }
 uller = { path = ".", features = ["full"] }
 
 [features]
