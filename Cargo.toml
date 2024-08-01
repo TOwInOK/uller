@@ -15,7 +15,7 @@ edition = "2021"
 categories = []
 repository = "https://github.com/TOwInOK/uller"
 description = "Generate/Donwload your links"
-documentation = ""
+documentation = "https://docs.rs/uller"
 
 [dependencies]
 url = "2.5.2"

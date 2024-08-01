@@ -6,6 +6,8 @@ name = "uller_macro"
 edition = "2021"
 version = "0.1.2"
 description = "Macro-crate for uller"
+documentation = "https://docs.rs/uller_macro"
+repository = "https://github.com/TOwInOK/uller/tree/main/uller_macro"
 
 [dependencies]
 proc-macro2 = "1.0"
