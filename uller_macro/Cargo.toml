@@ -4,7 +4,7 @@ package.license = true
 license.workspace = true
 name = "uller_macro"
 edition = "2021"
-version = "0.1.0"
+version = "0.1.1"
 description = "Macro-crate for uller"
 
 [dependencies]
@@ -23,3 +23,6 @@ default = []
 buller = []
 juller = []
 full = ["buller", "juller"]
+
+[package.metadata.docs.rs]
+all-features = true
