@@ -1,3 +1,6 @@
+//! Macroses for [uller](https://crates.io/crates/uller)
+//! check doc!
+
 use proc_macro::TokenStream;
 use qller::impl_qller;
 use syn::{parse_macro_input, DeriveInput};
