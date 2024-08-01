@@ -2,7 +2,7 @@ workspace = { members = [
     "uller_macro",
 ], package.version = "0.0.1", package.authors = [
     "TOwInOK",
-] }
+], package.license = "MIT" }
 [package]
 version.workspace = true
 authors.workspace = true
