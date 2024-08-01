@@ -56,6 +56,7 @@ pub mod prelude {
     pub use crate::JsonDownload;
 
     pub use crate::MakeLink;
+    pub use crate::Url;
 
     #[cfg(feature = "buller")]
     pub use uller_macro::Buller;
@@ -63,6 +64,4 @@ pub mod prelude {
     pub use uller_macro::Juller;
     #[cfg(feature = "macro")]
     pub use uller_macro::Qller;
-
-    pub use crate::Url;
 }

@@ -1236,7 +1236,7 @@ checksum = "e421abadd41a4225275504ea4d6566923418b7f05506fbc9c0fe86ba7396114b"
 
 [[package]]
 name = "uller"
-version = "0.1.21"
+version = "0.1.22"
 dependencies = [
  "async-trait",
  "bytes",
@@ -1252,7 +1252,7 @@ dependencies = [
 
 [[package]]
 name = "uller_macro"
-version = "0.1.2"
+version = "0.1.21"
 dependencies = [
  "proc-macro2",
  "quote",

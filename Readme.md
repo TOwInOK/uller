@@ -11,6 +11,8 @@ This crate provides you with:
 * `BytesDownload`
   - An interface for downloading data as `bytes` from a `MakeLink` conversion.
 
+**Note:** Add url crate for your project.
+
 ### Information below contains examples from the [uller-macro crate](https://crates.io/crates/uller_macro).
 
 # Example (future - macro)

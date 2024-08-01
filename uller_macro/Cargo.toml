@@ -4,9 +4,10 @@ package.license = true
 license.workspace = true
 name = "uller_macro"
 edition = "2021"
-version = "0.1.2"
+version = "0.1.21"
 description = "Macro-crate for uller"
 documentation = "https://docs.rs/uller_macro"
+keywords = ["parser", "url", "http", "uller", "macros"]
 repository = "https://github.com/TOwInOK/uller/tree/main/uller_macro"
 
 [dependencies]

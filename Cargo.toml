@@ -6,13 +6,19 @@ authors = ["TOwInOK"]
 license = "MIT"
 
 [package]
-version = "0.1.21"
+version = "0.1.22"
 authors.workspace = true
 package.license = true
 license.workspace = true
 name = "uller"
 edition = "2021"
-categories = []
+keywords = ["parser", "url", "http", "uller"]
+categories = [
+    "asynchronous",
+    "web-programming",
+    "parsing",
+    "network-programming",
+]
 repository = "https://github.com/TOwInOK/uller"
 description = "Generate/Donwload your links"
 documentation = "https://docs.rs/uller"
