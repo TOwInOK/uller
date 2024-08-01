@@ -1,9 +1,9 @@
 [package]
-version.workspace = true
 authors.workspace = true
 package.license = true
 name = "uller_macro"
 edition = "2021"
+version = "0.1.0"
 
 [dependencies]
 proc-macro2 = "1.0"
