@@ -12,7 +12,7 @@ package.license = true
 license.workspace = true
 name = "uller"
 edition = "2021"
-categories = ["parser", "url-generator", "url", "bytes", "json"]
+categories = ["url", "generator", "parsing", "uller"]
 repository = "https://github.com/TOwInOK/uller"
 description = "Generate/Donwload your links"
 
